@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    height: 100vh;
+    background-color: #f58b54;
+    font-family: sans-serif;
+}
+
+.score {
+    display: flex;
+    height: 20vh;
+    justify-content: space-around;
+    align-items: center;
+    color: #211717;
+}
+
+.score h2 {
+    font-size: 1.5rem;
+}
+
+.score p {
+    margin-top: 0.5rem;
+    text-align: center;
+}
