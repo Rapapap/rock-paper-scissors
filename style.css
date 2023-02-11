@@ -6,7 +6,7 @@
 
 section {
     height: 100vh;
-    background-color: #f58b54;
+    background-color: #006778;
     font-family: sans-serif;
 }
 
@@ -15,7 +15,7 @@ section {
     height: 20vh;
     justify-content: space-around;
     align-items: center;
-    color: #211717;
+    color: #FFD124;
 }
 
 .score h2 {
@@ -25,4 +25,65 @@ section {
 .score p {
     margin-top: 0.5rem;
     text-align: center;
+}
+
+.intro {
+    align-items: center;
+    color: #FFD124;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    opacity: 0;
+}
+
+.intro h1 {
+    font-size: 3rem;
+}
+
+.intro button, 
+.match button{
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    color: #FFD124;
+    font-size: 1.2rem;
+    background-color: #0093AB;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.items img {
+    width: 50%;
+    padding: 1rem;
+}
+
+.match {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+ 
+.winner {
+    color: #FFD124;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.items, 
+.options {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+div.fadeOut {
+    opacity: 0;
+    pointer-events: none;
+}
+
+div.fadeIn {
+    opacity: 1;
+    pointer-events: all;
 }
