@@ -29,12 +29,22 @@ const game = () => {
         const komputerChoice = komputerOptions[komputerNumber];
         //console.log(komputerChoice);
         
+        //Call compare function
+        compare(this.textContent, komputerChoice);
         //update img
         playerItem.src = `./assets/${this.textContent}.png`;
         komputerItem.src = `./assets/${komputerChoice}.png`;
       });
     });
   };
+  //function update score
+  const updateScore = () => {
+    const playerScore = document.querySelector(`.player-score p`);
+    const komputerScore = document.querySelector(`.komputer-score p`);
+    playerScore.textContent = pScore;
+    komputerScore.textContent = kScore;
+  }
+
 
   //function untuk membandingkan pilihan
   const compare = (playerChoice, komputerChoice) => {
@@ -48,9 +58,13 @@ const game = () => {
     if(playerChoice === `rock`) {
       if(komputerChoice === `scissor`){
         winner.textContent = `Player Wins`;
+        pScore ++;
+        updateScore();
         return;
       }else{
         winner.textContent = `Computer Wins`;
+        kScore ++;
+        updateScore();
         return;
       }
     }
@@ -58,9 +72,13 @@ const game = () => {
     if(playerChoice === `paper`) {
       if(komputerChoice === `scissor`){
         winner.textContent = `Computer Wins`;
+        kScore ++;
+        updateScore();
         return;
       }else{
         winner.textContent = `Player Wins`;
+        pScore ++;
+        updateScore();
         return;
       }
     }
@@ -68,9 +86,13 @@ const game = () => {
     if(playerChoice === `scissor`) {
       if(komputerChoice === `rock`){
         winner.textContent = `Computer Wins`;
+        kScore ++;
+        updateScore();
         return;
       }else{
         winner.textContent = `Player Wins`;
+        pScore ++;
+        updateScore();
         return;
       }
     }
