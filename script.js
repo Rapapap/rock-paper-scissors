@@ -19,21 +19,34 @@ const game = () => {
     const options = document.querySelectorAll(`.options button`);
     const playerItem = document.querySelector(`.player-item`);
     const komputerItem = document.querySelector(`.komputer-item`);
+    const items = document.querySelectorAll(`.items img`);
+
+    items.forEach((item) => {
+      item.addEventListener(`animationend`, function () {
+        this.style.animation = ``;
+      });
+    });
     //komputer Options
     const komputerOptions = [`rock`, `paper`, `scissor`];
     //function untuk button
-    options.forEach( options => {
-      options.addEventListener(`click`, function() {
+    options.forEach((options) => {
+      options.addEventListener(`click`, function () {
         //pilihan komputer
-        const komputerNumber = Math.floor(Math.random() * 3);//dikali tiga karena math.random mengeluarkan angka random 0-1
+        const komputerNumber = Math.floor(Math.random() * 3); //dikali tiga karena math.random mengeluarkan angka random 0-1
         const komputerChoice = komputerOptions[komputerNumber];
         //console.log(komputerChoice);
-        
-        //Call compare function
-        compare(this.textContent, komputerChoice);
-        //update img
-        playerItem.src = `./assets/${this.textContent}.png`;
-        komputerItem.src = `./assets/${komputerChoice}.png`;
+
+        setTimeout(() => {
+          //Call compare function
+          compare(this.textContent, komputerChoice);
+          //update img
+          playerItem.src = `./assets/${this.textContent}.png`;
+          komputerItem.src = `./assets/${komputerChoice}.png`;
+        }, 2000);
+
+        //animation
+        playerItem.style.animation = "shakePlayer 2s ease";
+        komputerItem.style.animation = "shakekomputer 2s ease";
       });
     });
   };
@@ -43,8 +56,7 @@ const game = () => {
     const komputerScore = document.querySelector(`.komputer-score p`);
     playerScore.textContent = pScore;
     komputerScore.textContent = kScore;
-  }
-
+  };
 
   //function untuk membandingkan pilihan
   const compare = (playerChoice, komputerChoice) => {
@@ -55,48 +67,48 @@ const game = () => {
       return;
     }
     //check untuk rock
-    if(playerChoice === `rock`) {
-      if(komputerChoice === `scissor`){
+    if (playerChoice === `rock`) {
+      if (komputerChoice === `scissor`) {
         winner.textContent = `Player Wins`;
-        pScore ++;
+        pScore++;
         updateScore();
         return;
-      }else{
+      } else {
         winner.textContent = `Computer Wins`;
-        kScore ++;
+        kScore++;
         updateScore();
         return;
       }
     }
     //check untuk paper
-    if(playerChoice === `paper`) {
-      if(komputerChoice === `scissor`){
+    if (playerChoice === `paper`) {
+      if (komputerChoice === `scissor`) {
         winner.textContent = `Computer Wins`;
-        kScore ++;
+        kScore++;
         updateScore();
         return;
-      }else{
+      } else {
         winner.textContent = `Player Wins`;
-        pScore ++;
+        pScore++;
         updateScore();
         return;
       }
     }
     //check untuk scissor
-    if(playerChoice === `scissor`) {
-      if(komputerChoice === `rock`){
+    if (playerChoice === `scissor`) {
+      if (komputerChoice === `rock`) {
         winner.textContent = `Computer Wins`;
-        kScore ++;
+        kScore++;
         updateScore();
         return;
-      }else{
+      } else {
         winner.textContent = `Player Wins`;
-        pScore ++;
+        pScore++;
         updateScore();
         return;
       }
     }
-  }
+  };
 
   //Memanggil semua function
   startGame();
